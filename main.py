@@ -176,7 +176,8 @@ class SteamParser:
                 handle = winreg.ConnectRegistry(None, hive)
                 valve_key = winreg.OpenKey(handle, r"SOFTWARE\Valve\Steam")
                 steam_path = winreg.QueryValueEx(valve_key, "SteamPath")[0]
-
+                winreg.CloseKey(valve_key)
+                
             except FileNotFoundError:
                 continue
 
